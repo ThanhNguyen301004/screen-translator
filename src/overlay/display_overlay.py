@@ -303,12 +303,15 @@ class TranslationOverlay(tk.Toplevel):
         # ── Close button (×) ─────────────────────────────────────────────────
         close_btn = tk.Button(
             inner, text="×",
-            bg=self.BG, fg="#80868b",
-            activebackground=self.SEP_COLOR, activeforeground="#202124",
+            bg=self.BG, fg="#c00000",
+            activebackground=self.SEP_COLOR, activeforeground="#525560",
             relief="flat", bd=0,
-            font=("Segoe UI", 13),
+            font=("Segoe UI", 8),
             cursor="hand2",
+            width=2,    # ← chiều rộng (tính theo số ký tự)
+            height=1,
             command=self.destroy,
+            
         )
         close_btn.place(relx=1.0, rely=0.0, anchor="ne", x=-4, y=4)
 
