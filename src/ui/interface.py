@@ -46,8 +46,10 @@ class ScreenTranslatorUI:
         end_y = self.canvas.canvasy(event.y)
         self.selection_window.destroy()
         try:
-            image = capture_screen_area(int(self.start_x), int(self.start_y), int(end_x), int(end_y))
-            text = extract_text_from_image(image, self.settings['source_lang'])
+            width = int(end_x - self.start_x)
+            height = int(end_y - self.start_y)
+            image = capture_screen_area(int(self.start_x), int(self.start_y), width, height)
+            text = extract_text_from_image(image)
             print("Image size:", image.size)
             image.save("debug_capture.png")
             print("OCR RAW TEXT:", repr(text))

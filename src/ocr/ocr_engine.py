@@ -19,7 +19,7 @@ def extract_text_from_image(image: Image, lang='eng+vie'):
 
         # Tăng contrast
         gray = cv2.convertScaleAbs(gray, alpha=1.5, beta=0)
-
+        gray = cv2.GaussianBlur(gray, (3, 3), 0)
         # Adaptive threshold (tốt hơn threshold thường)
         thresh = cv2.adaptiveThreshold(
             gray,
