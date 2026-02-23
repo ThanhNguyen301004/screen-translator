@@ -20,7 +20,7 @@ class ScreenTranslatorUI:
         self.register_hotkey()
 
     def register_hotkey(self):
-        keyboard.add_hotkey('ctrl+shift+t', self.start_selection)
+        keyboard.add_hotkey('ctrl+shift+l', self.start_selection)
 
     def start_selection(self):
         self.selection_window = tk.Toplevel(self.root)
@@ -48,6 +48,8 @@ class ScreenTranslatorUI:
         try:
             image = capture_screen_area(int(self.start_x), int(self.start_y), int(end_x), int(end_y))
             text = extract_text_from_image(image, self.settings['source_lang'])
+            print("Image size:", image.size)
+            image.save("debug_capture.png")
             print("OCR RAW TEXT:", repr(text))
             if text:
                 translated = translate_text(text, self.settings['source_lang'], self.settings['target_lang'])
